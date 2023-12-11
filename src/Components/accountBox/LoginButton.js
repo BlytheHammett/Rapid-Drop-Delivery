@@ -1,4 +1,3 @@
-import { GoogleLogin } from 'react-google-login'
 import Axios from 'axios'
 import { useNavigate } from "react-router-dom"
 
@@ -35,14 +34,6 @@ function LoginButton() {
 
     return (
         <div id="signInButton">
-            <GoogleLogin 
-                clientId={clientId}
-                buttonText="Login"
-                onSuccess={onSuccess}
-                onFailure={onFailure}
-                cookiePolicy={`single_host_origin`}
-                isSignedIn={true}
-            />
         </div>
     )
 
