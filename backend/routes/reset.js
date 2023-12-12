@@ -14,18 +14,30 @@ router.route('/')
 
         const User = require('../models/User')
         const users = await User.find({ email: email })
+        const found_user = users[0]
 
-        const user_id = users[0].id
+        if (!found_user) {
+            console.log("no user found")
+
+            res.json({
+                "failed": true
+            })
+        } else {
+            const user_id = found_user.id
     
-        console.log(email)
+            console.log(email)
 
-        const otp = `${Math.floor(1000 + Math.random() * 9000)}`
-        sendMail(otp, res, email)
+            const otp = `${Math.floor(1000 + Math.random() * 9000)}`
 
-        res.json({
-            "user_id": user_id,
-            "code": otp
-        })
+            console.log(`otp is ${otp}`)
+
+            sendMail(otp, res, email)
+
+            res.json({
+                "user_id": user_id,
+                "code": otp
+            })
+        }
     })
 
 router.route('/populate')
@@ -36,8 +48,6 @@ router.route('/populate')
 
         console.log("populating...")
         const { user_id } = req.body
-
-        console.log(req)
 
         console.log(user_id)
 
@@ -91,8 +101,6 @@ router.route('/new')
         const users = await User.find({ _id: new ObjectId(user_id) })
         const found_user = users[0]
 
-        console.log(found_user)
-
         found_user.new_password = true
 
         found_user.password = password
@@ -130,5 +138,6 @@ async function sendMail(otp, res, email) {
     
     return otp
 }
+
 
 module.exports = router

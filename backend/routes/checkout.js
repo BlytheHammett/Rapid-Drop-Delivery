@@ -27,7 +27,7 @@ router.route('/')
         }
         else if (type === "five") {
             res.json({
-                "price": found_service.five
+                "price": found_service.five_day
             })
         }
     })
@@ -62,5 +62,6 @@ router.route('/save')
         
         new_delivery.save()
     })
+
 
 module.exports = router

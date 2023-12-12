@@ -67,12 +67,12 @@ export default function PublicServices(props) {
             {showResults && <ul className="center">
                 {services.map((service) => {
 
-                return (<li key={service}>
+                return (<li key={service} className="card">
                         <h2>{service.name}</h2>
                         <h2>Service rating: {service.rating} out of 5 stars</h2>
-                        <Link to={`/public/reviews/${service.name}/`}>Read the reviews</Link>
+                        <Link to={`/public/reviews/${service.name}/`} className="link">Read the reviews</Link>
                         <h3>Prices starting at ${service.lowest_price}</h3>
-                        <Link to={`/public/services/${service.name}/${service.package_size}/`}>See more info</Link>
+                        <Link to={`/public/services/${service.name}/${service.package_size}/`} className="link">See more info</Link>
                     </li>)
                     })}
             </ul>}

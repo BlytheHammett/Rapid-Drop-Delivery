@@ -9,6 +9,7 @@ export default function Authenticate(props) {
     const navigate = useNavigate()
     const [entered_code, setEnteredCode] = useState("")
     const user_id = useParams()
+    const [wrongCode, setWrongCode] = useState(false)
 
     function handleSubmit(event) {
 
@@ -22,13 +23,18 @@ export default function Authenticate(props) {
 
                 if (verified) {
                     navigate(`/customer/${id}`)
+                    setWrongCode(false)
+                } else {
+                    setWrongCode(true)
                 }
             })
 
         event.preventDefault()
     }
 
-    return <BoxContainer className="center">
+    return (
+        <>
+            <BoxContainer className="center">
         <FormContainer>
             <Input placeholder="Google MFA code" onChange={(e) => {
                 setEnteredCode(e.target.value)
@@ -36,5 +42,10 @@ export default function Authenticate(props) {
         </FormContainer>
             <SubmitButton type="submit" onClick={handleSubmit}>Submit</SubmitButton>
     </BoxContainer>
+            {wrongCode && <div>
+                <h3 className="center">Wrong code. Please try again.</h3>
+                </div>}
+        </>
+    )
 
 }

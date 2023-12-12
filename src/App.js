@@ -36,6 +36,7 @@ import DriverTracking from "./Components/DriverTracking"
 import DriverPickups from "./Components/DriverPickups"
 import DriverDropoffs from "./Components/DriverDropoffs"
 import AdminChat from "./Components/AdminChat"
+import DriverChat from "./Components/DriverChat"
 
 function App() {
   return (
@@ -71,6 +72,7 @@ function App() {
         <Route path="/driver/tracking/:driver_id" element={<DriverTracking></DriverTracking>}></Route>
         <Route path="/driver/pickups/:driver_id" element={<DriverPickups></DriverPickups>}></Route>
         <Route path="/driver/dropoffs/:driver_id" element={<DriverDropoffs></DriverDropoffs>}></Route>
+        <Route path="/driver/chat/:fullname/:driver_id" element={<DriverChat></DriverChat>}></Route>
         <Route path="/admin/chat" element={<AdminChat></AdminChat>}></Route>
       </Routes>
     </BrowserRouter>

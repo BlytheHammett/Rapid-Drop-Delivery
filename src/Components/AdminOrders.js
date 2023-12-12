@@ -27,7 +27,7 @@ export default function AdminOrders() {
                         <h2>{order.customer_name}</h2>
                         <h3>{order.customer_email}</h3>
                         {order.receipts.map(receipt => {
-                            return <div>
+                            return <div className="card">
                                 <h4>{receipt.name}</h4>
                                 <h4>{receipt.package_size}</h4>
                                 <h4>{receipt.type}</h4>

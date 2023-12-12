@@ -15,6 +15,7 @@ router.route('/')
         const users = await User.find({ _id: new ObjectId(user_id) })
         const found_user = users[0]
 
+        
         res.json({
             "orders": found_user.receipts
         })

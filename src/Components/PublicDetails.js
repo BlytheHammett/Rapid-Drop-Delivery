@@ -54,9 +54,9 @@ export default function PublicDetails(props) {
         <>
             <PublicNav></PublicNav>
             <BoxContainer className="center">
-                <h3>Express: ${express}</h3>
-                <h3>2 Day Shipping: ${twoDay}</h3>
-                <h3>5 Day Shipping: ${fiveDay}</h3>
+                <h3 className="card">Express: ${express}</h3>
+                <h3 className="card">2 Day Shipping: ${twoDay}</h3>
+                <h3 className="card">5 Day Shipping: ${fiveDay}</h3>
             </BoxContainer>
         </>
     )

@@ -125,4 +125,20 @@ router.route('/notify')
         found_driver.save()
     })
 
+router.route('/name')
+    .get((req, res) => {
+        res.send("get driver's name")
+    })
+    .post(async (req, res) => {
+        const { driver_id } = req.body
+
+        const Driver = require('../models/Driver')
+        const drivers = await Driver.where({ _id: new ObjectId(driver_id) })
+        const found_driver = drivers[0]
+
+        res.json({
+            "fullname": found_driver.name
+        })
+    })
+
 module.exports = router

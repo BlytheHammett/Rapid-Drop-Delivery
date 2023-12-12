@@ -27,13 +27,13 @@ export default function Orders() {
             <Navbar id={user_id}></Navbar>
             {showResults && <ul className="center">
                 {orders.map(order => {
-                    return <li>
+                    return <li className="card">
                         <h3>Service: {order.name}</h3>
                         <h3>Package size: {order.package_size}</h3>
                         <h3>Delivery type: {order.type}</h3>
                         <h3>Price: {order.price}</h3>
                         <h3>Tracking ID: {order.tracking}</h3>
-                        <Link to={`/customer/review/${order.name}/${user_id}`}>Submit a review for this service</Link>
+                        <Link to={`/customer/review/${order.name}/${user_id}`} className="link">Submit a review for this service</Link>
                     </li>
                 })}
             </ul>}

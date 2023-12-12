@@ -25,12 +25,14 @@ const DriverNav = (props) => {
   const [fullname, setFullname] = useState("")
 
   useEffect(() => {
-    Axios.post('http://localhost:3002/customer/name', {
-            user_id: user_id
-        })
-            .then(data => {
-                setFullname(data.data.fullname)
-            })
+
+    Axios.post('http://localhost:3002/driver/name', {
+      driver_id: user_id
+    })
+      .then(data => {
+        setFullname(data.data.fullname)
+      })
+
   }, [])
 
   const [openMenu, setOpenMenu] = useState(false);
@@ -66,7 +68,7 @@ const DriverNav = (props) => {
         <a href={`/driver/tracking/${user_id}`}>Update Location</a>
         <a href={`/driver/pickups/${user_id}`}>Pickups</a>
         <a href={`/driver/dropoffs/${user_id}`}>Dropoffs</a>
-        <a href={`/driver/chat/`}>Chat</a>
+        <a href={`/driver/chat/${fullname}/${user_id}`}>Chat</a>
         <a href="/login">Logout</a>
         {/* <a href="">
           <BsCart2 className="navbar-cart-icon" />

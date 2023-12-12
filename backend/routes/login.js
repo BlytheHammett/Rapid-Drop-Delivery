@@ -16,25 +16,34 @@ router.route('/')
         const users = await User.find({ email: email })
         const found_user = users[0]
 
-        if (found_user.password === password) {
+        if (!found_user) {
+            console.log("not found")
 
-            if (found_user.new_password) {
-                res.json({
-                    "user_id": found_user.id,
-                    "correct_login": true,
-                    "show_captcha": true
-                })
+            res.json({
+                "failed": true
+            })
+        } else {
+            if (found_user.password === password) {
+
+                if (found_user.new_password) {
+                    res.json({
+                        "user_id": found_user.id,
+                        "correct_login": true,
+                        "show_captcha": true
+                    })
+                } else {
+                    res.json({
+                        "user_id": found_user.id,
+                        "correct_login": true,
+                        "show_captcha": false
+                    })
+                }
             } else {
                 res.json({
-                    "user_id": found_user.id,
-                    "correct_login": true,
-                    "show_captcha": false
+                    "correct_login": false,
+                    "failed": true
                 })
             }
-        } else {
-            res.json({
-                "correct_login": false
-            })
         }
     })
 

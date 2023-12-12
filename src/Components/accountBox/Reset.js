@@ -21,6 +21,9 @@ export default function ForgotPasswordForm(props){
     const [answer_1, setAnswer1] = useState("")
     const [answer_2, setAnswer2] = useState("")
     const [user_answer, setUserAnswer] = useState("")
+    const [wrongEmail, setWrongEmail] = useState(false)
+    const [wrongCode, setWrongCode] = useState(false)
+    const [wrongSecurity, setWrongSecurity] = useState(false)
 
     const navigate = useNavigate()
 
@@ -50,21 +53,33 @@ export default function ForgotPasswordForm(props){
             email: email
         })
             .then((data) => {
-                setUserId(data.data.user_id)
-                setOTP(data.data.code)
+                const failed = data.data.failed
+                if (failed) {
+                    setWrongEmail(true)
+                } else {
+                    setUserId(data.data.user_id)
+                    setOTP(data.data.code)
 
-                populateQuestions(data.data.user_id)
+                    populateQuestions(data.data.user_id)
+                    setEmailSent(true)
+                    setWrongEmail(false)
+                }
             })
-
-        setEmailSent(true)
 
         event.preventDefault()
     }
 
     function handleSubmitCode(event) {
 
+        console.log("checking code")
+
+        console.log(`${otp} ${userCode}`)
+
         if (otp === userCode) {
             setEmailSuccess(true)
+            setWrongCode(false)
+        } else {
+            setWrongCode(true)
         }
 
         event.preventDefault()
@@ -83,6 +98,9 @@ export default function ForgotPasswordForm(props){
 
                 if (correct) {
                     setSecuritySuccess(true)
+                    setWrongSecurity(false)
+                } else {
+                    setWrongSecurity(true)
                 }
             })
 
@@ -155,6 +173,15 @@ export default function ForgotPasswordForm(props){
         <Marginer direction="vertical" margin="1.6em"/>
         <MutedLink href="#">Back to <BoldLink href="#" onClick={switchToSignin}>Signin</BoldLink></MutedLink>
 </BoxContainer>}
+        {wrongEmail && <div>
+            <h3 className="center">There is no account associated with that email.</h3>
+            </div>}
+        {wrongCode && <div>
+            <h3 className="center">Wrong code. Please try again.</h3>
+            </div>}
+        {wrongSecurity && <div>
+            <h3 className="center">Wrong answer. Please try again.</h3>
+            </div>}
         </>
     )
 }

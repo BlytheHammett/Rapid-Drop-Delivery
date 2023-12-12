@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Axios from 'axios'
 import { BoxContainer, FormContainer, MutedLink, SubmitButton, Input, BoldLink, DropDown } from "./common"
 import '../styles/login.css'
+import { useNavigate } from "react-router-dom"
 
 export default function DriverPickups() {
 
@@ -11,6 +12,8 @@ export default function DriverPickups() {
     const [pickups, setPickups] = useState("")
     const [showResults, setShowResults] = useState(false)
     const [location, setLocation] = useState("")
+    
+    const navigate = useNavigate()
 
     useEffect(() => {
 
@@ -30,6 +33,11 @@ export default function DriverPickups() {
             driver_id: driver_id,
             location: location
         })
+            .finally(() => {
+                console.log("navigating")
+
+                navigate(`/driver/${driver_id}`)
+            })
 
         event.preventDefault()
     }

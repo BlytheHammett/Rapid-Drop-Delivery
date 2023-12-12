@@ -54,7 +54,7 @@ export const Input = styled.input`
 
     &:focus{
         outline: none;
-        border-bottom: 2px solid rgb(220, 20, 60);
+        border-bottom: 2px solid #fe9e0d;
     }
 `;
 
@@ -69,7 +69,7 @@ export const SubmitButton = styled(Link)`
     border-radius: 100px 100px 100px 100px;
     cursor: pointer;
     transition: all, 240ms ease-in-out;
-    background: #fe9e0d;
+    background-image: linear-gradient(to right top, #fe9e0d, #ffaf00, #ffc000, #ffd100, #ffe200);
 
     &:hover{
         filter: brightness(1.03);
@@ -96,6 +96,6 @@ export const DropDown = styled.select`
 
     &:focus{
         outline: none;
-        border-bottom: 2px solid rgb(220, 20, 60);
+        border-bottom: 2px solid #fe9e0d;
     }
 `;

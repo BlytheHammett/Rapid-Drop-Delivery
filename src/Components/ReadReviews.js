@@ -28,7 +28,7 @@ export default function ReadReviews() {
             {showResults && <ul className="center">
                 {reviews.map(review => {
                     return (
-                        <li key={review}>
+                        <li key={review} className="card">
                             <h3>{review}</h3>
                         </li>
                     )

@@ -155,23 +155,38 @@ router.route('/location')
         res.send("location route")
     })
     .post(async (req, res) => {
+
+        console.log("calling location route")
+
         const { trackingId } = req.body
 
         const Delivery = require('../models/Delivery')
         const deliveries = await Delivery.where({ _id: new ObjectId(trackingId) })
         const found_delivery = deliveries[0]
 
-        const driver_name = found_delivery.driver
+        if (!found_delivery) {
+            res.json({
+                "no_delivery": true
+            })
+        } else {
+            const driver_name = found_delivery.driver
 
-        const Driver = require('../models/Driver')
-        const drivers = await Driver.where({ name: driver_name })
-        const found_driver = drivers[0]
+            if (!driver_name) {
+                res.json({
+                    "no_driver": true
+                })
+            } else {
+                const Driver = require('../models/Driver')
+                const drivers = await Driver.where({ name: driver_name })
+                const found_driver = drivers[0]
 
-        res.json({
-            "lat": found_driver.lat,
-            "lng": found_driver.lng
-        })
-        
+                res.json({
+                    "lat": found_driver.lat,
+                    "lng": found_driver.lng
+                })
+            }
+        }
     })
+
 
 module.exports = router

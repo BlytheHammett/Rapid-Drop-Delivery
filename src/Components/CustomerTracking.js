@@ -18,17 +18,44 @@ export default function CustomerTracking(props) {
     const [trackingSent, setTrackingSent] = useState(false)
     const [position, setPosition] = useState("")
     const { user_id } = useParams()
+    const [invalidTacking, setInvalidTracking] = useState(false)
+    const [wrongTracking, setWrongTracking] = useState(false)
+    const [invalidDelivery, setInvalidDelivery] = useState(false)
 
     function handleTrackingSubmit(event) {
 
-        Axios.post('http://localhost:3002/customer/location', {
-            trackingId: trackingId
-        })
-            .then(data => {
-                setPosition({lat: parseFloat(data.data.lat), lng: parseFloat(data.data.lng)})
-                setTrackingSent(true)
-                console.log(data.data.lat)
+        if (trackingId.length < 24) {
+            setInvalidTracking(true)
+        } else {
+            setInvalidTracking(false)
+
+            Axios.post('http://localhost:3002/customer/location', {
+                trackingId: trackingId
             })
+            .then(data => {
+
+                const no_delivery = data.data.no_delivery
+
+                console.log(`no delivery is ${no_delivery}`)
+
+                if (no_delivery) {
+                    setWrongTracking(true)
+                } else {
+                    setWrongTracking(false)
+
+                    const no_driver = data.data.no_driver
+
+                    if (no_driver) {
+                        setInvalidDelivery(true)
+                    } else {
+                        setInvalidDelivery(false)
+
+                        setPosition({lat: parseFloat(data.data.lat), lng: parseFloat(data.data.lng)})
+                        setTrackingSent(true)
+                    }
+                }
+            })
+        }
 
         event.preventDefault()
     }
@@ -55,6 +82,15 @@ export default function CustomerTracking(props) {
                     </Map>
                 </div>
             </APIProvider>}
+        {wrongTracking && <div>
+            <h3 className="center">There is no delivery with this tracking ID</h3>
+            </div>}
+            {invalidTacking && <div>
+            <h3 className="center">Tracking ID is invalid</h3>
+            </div>}
+            {invalidDelivery && <div>
+            <h3 className="center">There has not been a delivery driver assigned to this delivery yet. Please check back soon!</h3>    
+            </div>}
         </>
     )
 

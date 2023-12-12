@@ -4,6 +4,7 @@ import { BoxContainer, FormContainer, MutedLink, SubmitButton, Input, BoldLink, 
 import { useParams } from "react-router-dom"
 import '../styles/login.css'
 import Axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 export default function Checkout() {
 
@@ -11,6 +12,7 @@ export default function Checkout() {
     const [price, setPrice] = useState("")
     const [pickup, setPickup] = useState("")
     const [dropoff, setDropoff] = useState("")
+    const navigate = useNavigate()
 
     useEffect(() => {
 
@@ -38,6 +40,9 @@ export default function Checkout() {
             pickup: pickup,
             dropoff: dropoff
         })
+            .then(() => {
+                navigate(`/customer/${user_id}`)
+            })
 
         event.preventDefault()
     }

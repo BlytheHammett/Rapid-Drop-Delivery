@@ -18,6 +18,7 @@ import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import { useEffect } from "react"
 import Axios from 'axios'
+import '../styles/login.css'
 
 const Navbar = (props) => {
 

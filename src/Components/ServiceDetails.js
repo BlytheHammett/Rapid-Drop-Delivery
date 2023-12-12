@@ -43,10 +43,16 @@ export default function ServiceDetails(props) {
     }
 
     function handleTwoDay(event) {
+
+        navigate(`/customer/checkout/${serviceName}/${packageSize}/two/${user_id}`)
+
         event.preventDefault()
     }
 
     function handleFiveDay(event) {
+
+        navigate(`/customer/checkout/${serviceName}/${packageSize}/five/${user_id}`)
+
         event.preventDefault()
     }
 

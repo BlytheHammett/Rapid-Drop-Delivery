@@ -18,6 +18,7 @@ export default function Login(props){
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [show_captcha, setShowCaptcha] = useState(false)
+    const [showError, setShowError] = useState(false)
 
     const clientId = "73712902965-e3seb15rmsp7153hf80i69cdtbcrq07b.apps.googleusercontent.com"
 
@@ -64,15 +65,23 @@ export default function Login(props){
                 const id = data.data.user_id
                 const correct_login = data.data.correct_login
                 const show_captcha = data.data.show_captcha
+                const failed = data.data.failed
 
-                setUserId(id)
-                setShowCaptcha(show_captcha)
+                if (failed) {
+                    console.log("wrong email and/or password")
 
-                console.log(correct_login)
-                console.log(`show captcha? ${show_captcha}`)
+                    setShowError(true)
+                } else {
+                    setShowError(false)
+                    setUserId(id)
+                    setShowCaptcha(show_captcha)
 
-                if (correct_login && !show_captcha) {
-                    navigate(`/mfa/authenticate/${id}`)
+                    console.log(correct_login)
+                    console.log(`show captcha? ${show_captcha}`)
+
+                    if (correct_login && !show_captcha) {
+                        navigate(`/mfa/authenticate/${id}`)
+                    }
                 }
             })
         }
@@ -102,6 +111,9 @@ export default function Login(props){
             <MutedLink href="#">Don't have an account? <BoldLink href="#" onClick={switchToSignup}>Sign Up</BoldLink></MutedLink>
     </BoxContainer>
     {show_captcha && <ReCAPTCHA sitekey="6LceitUoAAAAACqk_JPQME2cfx_KKIVaoPRhdwrZ" onChange={onChange} className="center"/>}
+    {showError && <div className="center">
+            <h3>Wrong email and/or password. Please try again.</h3>
+        </div>}
         </>
     )
 }

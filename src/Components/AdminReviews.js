@@ -26,7 +26,7 @@ export default function AdminReviews() {
                     return <li>
                         <h2>{review.name}</h2>
                         {review.reviews.map(message => {
-                            return <h3>{message}</h3>
+                            return <h3 className="card">{message}</h3>
                         })}
                     </li>
                 })}    
