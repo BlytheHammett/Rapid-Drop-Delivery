@@ -17,7 +17,7 @@ export default function DriverPickups() {
 
     useEffect(() => {
 
-        Axios.post('http://localhost:3002/driver/pickups', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/driver/pickups', {
             driver_id: driver_id
         })
             .then((data) => {
@@ -29,7 +29,7 @@ export default function DriverPickups() {
 
     function handleSubmit(event) {
 
-        Axios.post('http://localhost:3002/driver/getdropoffs', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/driver/getdropoffs', {
             driver_id: driver_id,
             location: location
         })

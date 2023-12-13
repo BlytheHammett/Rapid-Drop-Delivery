@@ -16,7 +16,7 @@ export default function Checkout() {
 
     useEffect(() => {
 
-        Axios.post('http://localhost:3002/checkout', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/checkout', {
             name: serviceName,
             package_size: packageSize,
             type: type
@@ -31,7 +31,7 @@ export default function Checkout() {
 
     function handleOrder(event) {
 
-        Axios.post('http://localhost:3002/checkout/save', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/checkout/save', {
             name: serviceName,
             package_size: packageSize,
             type: type,

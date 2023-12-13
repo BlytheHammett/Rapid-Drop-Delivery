@@ -13,7 +13,7 @@ export default function Review() {
 
     function handleSubmit(event) {
 
-        Axios.post('http://localhost:3002/review', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/review', {
             name: serviceName,
             review: review,
             rating: rating

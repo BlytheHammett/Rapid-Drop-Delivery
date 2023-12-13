@@ -13,7 +13,7 @@ export default function DriverTracking() {
 
     function handleSubmit(event) {
 
-        Axios.post('http://localhost:3002/driver/update', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/driver/update', {
             driver_id: driver_id,
             lat: lat,
             lng: lng

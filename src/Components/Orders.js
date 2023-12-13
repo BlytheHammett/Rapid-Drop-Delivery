@@ -12,7 +12,7 @@ export default function Orders() {
 
     useEffect(() => {
 
-        Axios.post('http://localhost:3002/orders', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/orders', {
             user_id: user_id
         })
             .then((data) => {

@@ -41,7 +41,7 @@ export default function Register(props){
 
         }
 
-        Axios.post('http://localhost:3002/register', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/register', {
             fullname: fullname,
             email: email,
             password: password,

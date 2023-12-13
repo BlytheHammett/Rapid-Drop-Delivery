@@ -14,7 +14,7 @@ function LoginButton() {
         const password = res.profileObj.password
         const fullname = res.profileObj.name
         
-        Axios.post('http://localhost:3002/login/google', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/login/google', {
             email: email,
             password: password,
             fullname: fullname

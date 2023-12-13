@@ -10,7 +10,7 @@ export default function AdminOrders() {
 
     useEffect(() => {
         
-        Axios.post('http://localhost:3002/admin/orders')
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/admin/orders')
             .then(data => {
                 setOrders(data.data.orders)
                 setShowResults(true)

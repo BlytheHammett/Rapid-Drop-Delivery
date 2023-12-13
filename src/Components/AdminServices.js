@@ -20,7 +20,7 @@ export default function AdminServices() {
 
     function handleSubmit(event) {
 
-        Axios.post('http://localhost:3002/admin/add', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/admin/add', {
             name: name,
             package_size: package_size,
             express: express,
@@ -36,7 +36,7 @@ export default function AdminServices() {
 
     function modifyPrice(event) {
 
-        Axios.post('http://localhost:3002/admin/modify', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/admin/modify', {
             name: cur_name,
             delivery_option: delivery_option,
             package_size: package_size,

@@ -17,7 +17,7 @@ export default function CustomerSearch(props) {
 
     function handleSearchSubmit(event) {
 
-        Axios.post('http://localhost:3002/customer/services', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/customer/services', {
             package_size: selectedOption.toLowerCase()
         })
             .then((data) => {

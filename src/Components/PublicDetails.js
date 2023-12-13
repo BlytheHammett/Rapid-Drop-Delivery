@@ -19,7 +19,7 @@ export default function PublicDetails(props) {
 
     useEffect(() => {
 
-        Axios.post('http://localhost:3002/customer/package', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/customer/package', {
             package_size: packageSize,
             name: serviceName
         })

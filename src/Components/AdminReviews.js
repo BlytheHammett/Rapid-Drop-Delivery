@@ -10,7 +10,7 @@ export default function AdminReviews() {
 
     useEffect(() => {
 
-        Axios.post('http://localhost:3002/admin/reviews')
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/admin/reviews')
             .then(data => {
                 setReviews(data.data.reviews)
                 setShowResults(true)

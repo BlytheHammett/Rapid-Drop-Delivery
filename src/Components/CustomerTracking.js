@@ -29,7 +29,7 @@ export default function CustomerTracking(props) {
         } else {
             setInvalidTracking(false)
 
-            Axios.post('http://localhost:3002/customer/location', {
+            Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/customer/location', {
                 trackingId: trackingId
             })
             .then(data => {

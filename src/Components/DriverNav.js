@@ -27,7 +27,7 @@ const DriverNav = (props) => {
   useEffect(() => {
 
     if (fullname === "") {
-      Axios.post('http://localhost:3002/driver/name', {
+      Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/driver/name', {
       driver_id: user_id
     })
       .then(data => {

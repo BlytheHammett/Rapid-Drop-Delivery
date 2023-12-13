@@ -12,7 +12,7 @@ export default function Setup(props) {
     const [code, setCode] = useState("")
 
     useEffect(() => {
-        Axios.get("http://localhost:3002/mfa/setup", {
+        Axios.get("https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/mfa/setup", {
             params: {
                 user_id: user_id
             }

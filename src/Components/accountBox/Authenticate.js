@@ -13,7 +13,7 @@ export default function Authenticate(props) {
 
     function handleSubmit(event) {
 
-        Axios.post('http://localhost:3002/mfa/authenticate', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/mfa/authenticate', {
             entered_code: entered_code,
             user_id: user_id
         })

@@ -29,7 +29,7 @@ const Navbar = (props) => {
   useEffect(() => {
 
     if (fullname === "") {
-      Axios.post('http://localhost:3002/customer/name', {
+      Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/customer/name', {
             user_id: user_id
         })
             .then(data => {

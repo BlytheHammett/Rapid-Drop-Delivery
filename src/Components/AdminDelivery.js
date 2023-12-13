@@ -12,13 +12,13 @@ export default function AdminDelivery() {
     const [selected, setSelected] = useState("")
 
     useEffect(() => {
-        Axios.post('http://localhost:3002/admin/delivery')
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/admin/delivery')
             .then(data => {
                 setDrivers(data.data.drivers)
                 setShowResults(true)
             })
 
-        Axios.post('http://localhost:3002/admin/getdevs')
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/admin/getdevs')
             .then(data => {
                 setDeliveries(data.data.deliveries)
             })
@@ -29,7 +29,7 @@ export default function AdminDelivery() {
         console.log(`delivery is ${selected}`)
         console.log(`for driver ${driver.name}`)
 
-        Axios.post('http://localhost:3002/admin/assign', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/admin/assign', {
             pickup_address: selected,
             name: driver.name
         })

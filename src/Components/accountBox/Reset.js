@@ -29,7 +29,7 @@ export default function ForgotPasswordForm(props){
 
     function populateQuestions(id) {
         
-        Axios.post('http://localhost:3002/reset/populate', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/reset/populate', {
             user_id: id
         })
             .then((data) => {
@@ -49,7 +49,7 @@ export default function ForgotPasswordForm(props){
 
     function handleSendEmail(event) {
 
-        Axios.post('http://localhost:3002/reset', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/reset', {
             email: email
         })
             .then((data) => {
@@ -87,7 +87,7 @@ export default function ForgotPasswordForm(props){
 
     function handleSubmitSecurity(event) {
 
-        Axios.post('http://localhost:3002/reset/check', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/reset/check', {
             user_id: user_id,
             user_answer: user_answer
         })
@@ -109,7 +109,7 @@ export default function ForgotPasswordForm(props){
 
     function handleSubmitPassword(event) {
 
-        Axios.post('http://localhost:3002/reset/new', {
+        Axios.post('https://rapid-drop-delivery-9172cd7ac0e7.herokuapp.com/reset/new', {
             user_id: user_id,
             password: password
         })
