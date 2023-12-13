@@ -43,6 +43,6 @@ conn.on('error', () => {
     console.log('failed to connect to database')
 })
 
-app.listen(3002)
+app.listen(process.env.PORT || 3002)
 
 module.exports = conn
