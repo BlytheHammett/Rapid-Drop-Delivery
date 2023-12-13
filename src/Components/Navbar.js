@@ -27,12 +27,15 @@ const Navbar = (props) => {
   const [fullname, setFullname] = useState("")
 
   useEffect(() => {
-    Axios.post('http://localhost:3002/customer/name', {
+
+    if (fullname === "") {
+      Axios.post('http://localhost:3002/customer/name', {
             user_id: user_id
         })
             .then(data => {
                 setFullname(data.data.fullname)
             })
+    }
   }, [])
 
   const [openMenu, setOpenMenu] = useState(false);

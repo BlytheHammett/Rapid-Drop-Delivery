@@ -26,12 +26,14 @@ const DriverNav = (props) => {
 
   useEffect(() => {
 
-    Axios.post('http://localhost:3002/driver/name', {
+    if (fullname === "") {
+      Axios.post('http://localhost:3002/driver/name', {
       driver_id: user_id
     })
       .then(data => {
         setFullname(data.data.fullname)
       })
+    }
 
   }, [])
 

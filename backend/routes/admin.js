@@ -3,6 +3,7 @@ const router = express.Router()
 
 router.use(express.urlencoded({ extended: true }))
 
+
 router.route('/home')
     .get((req, res) => {
         res.send("admin home route")
